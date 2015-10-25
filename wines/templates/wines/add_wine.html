@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div>
-		<form method="post" enctype="multipart/form-data" action="{% url "wines:add_wine" %}">
+<div class="row">
+	
+		<form method="post" enctype="multipart/form-data" action="{% url "wines:add_wine" %}" class="small-12 columns">
 			{% csrf_token %}
     		{{form.as_ul}}
 
     		<input type="submit">
 		</form>
-	</div>
+</div>
 {% endblock content %}
