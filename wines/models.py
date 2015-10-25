@@ -19,7 +19,7 @@ class Grape(models.Model):
 
 
 	def __str__(self):
-		return "<Grape: {}>".format(self.name)
+		return "{}".format(self.name)
 
 class Wine(models.Model):
 
@@ -44,7 +44,7 @@ class Wine(models.Model):
 	rating = models.IntegerField(default=1, choices=RATINGS)
 
 	def __str__(self):
-		return "<Wine: {}>".format(self.name)
+		return "{}".format(self.name)
 
 
 

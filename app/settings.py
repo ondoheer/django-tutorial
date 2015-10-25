@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -24,6 +25,7 @@ SECRET_KEY = 'vokh&t6xsp9y120lj_z%qboxr+cn=3v2lp5x%mz-6@p1nu+u$1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -37,9 +39,20 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wines'
+    'wines',
+    'djangobower'
 )
 
+
+BOWER_INSTALLED_APPS =(
+    "fastclick#1.0.6",
+    "jquery#2.1.4",
+    "jquery-placeholder#2.0.9",
+    "jquery.cookie#1.4.1",
+    "modernizr#2.8.3",
+    "foundation#5.5.3"
+
+)
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,7 +63,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
 ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [

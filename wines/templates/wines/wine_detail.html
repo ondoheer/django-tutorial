@@ -2,11 +2,47 @@
 {% load staticfiles %}
 {% block content %}
     
-<h1>{{wine.name}}</h1>
+<div class="row">
+	<h1 class="small-12 columns">{{title}}</h1>
+</div>
+<div class="row " data-equalizer>
+	
+		<article class="wine small-12 medium-5 large-5 columns left" data-id="{{wine.id}}">
+			{% if wine.image %}
+			<img src="{{wine.image.url}}" alt="" class="small-12 columns">
+			{% endif %}
+			<h4 class="wine-name small-12 columns">
+				{{wine.name}}
+			</h4>
+			<h6 class="wine-vineyard-year small-12 columns">
+				{{wine.vineyard}} <span class="wine-year">({{wine.year}})</span>
+			</h6>
+			<h6 class="wine-type-grape small-12 columns">
+				{{wine.grape.name}} <span class="wine-type">{{wine.type }}</span>
+			</h6>
+			<h6 class="wine-rating small-12 columns">
+				Rating: {{wine.rating}}/5
+			</h6>
 
-<ul>
-	{% if wine.image %}<li><img src="{{wine.image.url}}" alt=""></li>{% endif %}
-</ul>
+		</article>
+		<article class="wine-notes small-12 medium-5 large-5 columns left">
+			<h3>Notes</h3>
+			<p>
+				{{wine.notes}}
+			</p>
+			
+				<button id="editWine" disabled data-wine="{% url "wines:edit_wine" wine.id %}">Edit</button>
+			
+			
+				<button id="deleteWine" data-wine="" class="alert">Delete</button>
+			
+			
+			
+		</article>
+
+	
+</div>
+
 
 {% if wines %}
 <h2>other wines</h2>

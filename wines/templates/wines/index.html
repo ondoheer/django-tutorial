@@ -1,16 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-	{% if wines %}
-		
-		<ul>
-			{% for wine in wines %}
-			<li><a href="{% url "wines:single_wine" wine.id %}">{{wine.name}}</a></li>
-			{% endfor %}
-			
-		</ul>
 
-	{% else %}
-		<p>No wines have been created</p>
-	{% endif %}    
+	
+<div class="row" data-equalizer>
+	<h1 class="small-12 columns">{{title}}</h1>
+</div>
+	<div class="row">
+		{% if wines %}
+			{% for wine in wines %}
+				<a href="{% url "wines:single_wine" wine.id %}" >
+					<article class="wine small-12 medium-4 large-3 columns "  data-equalizer-watch>
+						{% if wine.image %}
+						<img src="{{wine.image.url}}" alt="" class="smal-12 columns">
+						{% endif %}
+						<h4 class="wine-name small-12 columns">
+							{{wine.name}}
+						</h4>
+						<h6 class="wine-vineyard-year small-12 columns">
+							{{wine.vineyard}} <span class="wine-year">({{wine.year}})</span>
+						</h6>
+						<h6 class="wine-type-grape small-12 columns">
+							{{wine.grape.name}} <span class="wine-type">{{wine.type}}</span>
+						</h6>
+						<h6 class="wine-rating small-12 columns">
+							Rating: {{wine.rating}}/5
+						</h6>
+
+					</article>
+				</a>
+			{% endfor %}
+
+		{% else %}
+			<h2>No wines have been Added yet</h2>
+		{% endif %}  	
+	</div>
+
 {% endblock content %}
