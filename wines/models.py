@@ -7,6 +7,7 @@ from jsonfield import JSONField
 
 class Grape(models.Model):
 
+		# 
 	TYPES_OF_WINES = (
 		("red_wine", "Red Wine"),
 		("white_wine", "White Wine"),
@@ -37,7 +38,8 @@ class Wine(models.Model):
 	country = models.CharField(max_length=50)
 
 	# this is because Djando doesn't support native JSSON fields for Postgres
-	image = JSONField(load_kwargs={'object_pairs_hook': collections.OrderedDict})
+	# image = JSONField(load_kwargs={'object_pairs_hook': collections.OrderedDict})
+	image = models.ImageField(blank=True)
 	notes = models.TextField()
 	rating = models.IntegerField(default=1, choices=RATINGS)
 

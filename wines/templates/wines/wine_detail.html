@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{% block content %}
+    
+<h1>{{wine.name}}</h1>
+
+<ul>
+	<li>Image: {{wine.image}}</li>
+</ul>
+
+{% if wines %}
+<h2>other wines</h2>
+<ul>
+	{% for wine in wines %}
+	<li><a href="{% url "wines:single_wine" wine.id %}">{{wine.name}}</a></li>
+
+	{% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}

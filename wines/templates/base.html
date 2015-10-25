@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Wines Base loaded</title>
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li><a href="{% url "wines:index" %}">Index</a></li>
+			<li><a href="{% url "wines:add_wine" %}">Add Wine</a></li>
+		</ul>
+	</nav>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

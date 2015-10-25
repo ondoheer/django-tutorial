@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if wines %}
+		
+		<ul>
+			{% for wine in wines %}
+			<li><a href="{% url "wines:single_wine" wine.id %}">{{wine.name}}</a></li>
+			{% endfor %}
+			
+		</ul>
+
+	{% else %}
+		<p>No wines have been created</p>
+	{% endif %}    
+{% endblock content %}
