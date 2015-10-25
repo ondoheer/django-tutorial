@@ -37,7 +37,7 @@ def add_wine(request):
 
 	if request.method == "POST":
 
-		form = WineForm(request.POST)
+		form = WineForm(request.POST, request.FILES)
 		
 		if form.is_valid():
 			form.save()

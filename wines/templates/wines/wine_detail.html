@@ -1,18 +1,23 @@
 {% extends "base.html"%}
-
+{% load staticfiles %}
 {% block content %}
     
 <h1>{{wine.name}}</h1>
 
 <ul>
-	<li>Image: {{wine.image}}</li>
+	{% if wine.image %}<li><img src="{{wine.image.url}}" alt=""></li>{% endif %}
 </ul>
 
 {% if wines %}
 <h2>other wines</h2>
 <ul>
 	{% for wine in wines %}
-	<li><a href="{% url "wines:single_wine" wine.id %}">{{wine.name}}</a></li>
+	<li>
+		
+		<a href="{% url "wines:single_wine" wine.id %}">{{wine.name}}</a>
+		
+
+	</li>
 
 	{% endfor %}
 </ul>

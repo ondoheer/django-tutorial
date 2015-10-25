@@ -39,7 +39,7 @@ class Wine(models.Model):
 
 	# this is because Djando doesn't support native JSSON fields for Postgres
 	# image = JSONField(load_kwargs={'object_pairs_hook': collections.OrderedDict})
-	image = models.ImageField(blank=True)
+	image = models.ImageField(upload_to="images/", blank=True)
 	notes = models.TextField()
 	rating = models.IntegerField(default=1, choices=RATINGS)
 
